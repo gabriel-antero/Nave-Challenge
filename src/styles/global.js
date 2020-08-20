@@ -31,5 +31,9 @@ export default createGlobalStyle`
     cursor: pointer;
   }
 
-  
+  @media (max-width: 500px) {
+    html {
+      font-size: 50%;
+    }
+  }
 `;
