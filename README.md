@@ -42,7 +42,7 @@
 
  - Instale todas as dependências:
   
-  ```ỳarn```
+  ```yarn```
   
  - Depois de instalar todas as dependências execute o servidor:
   
