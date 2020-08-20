@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import {shade} from 'polished';
 
 export const Container = styled.div`
   width: 100%;
@@ -34,8 +33,6 @@ export const Logout = styled.button`
 export const Content = styled.div`
   display: flex;
   flex-direction: column;
-
-
 `;
 
 export const TitleContainer = styled.div`
@@ -70,10 +67,22 @@ export const CardContainer = styled.div`
   display: flex;
   justify-content: space-between;
 
-  @media (max-width: 500px) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  @media (max-width: 1200px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
+  }
+
+  @media (max-width: 950px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+  }
+
+  @media (max-width: 700px) {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
   }
 `;
 
@@ -84,7 +93,6 @@ export const Image = styled.img`
   margin-bottom: 16px;
 
   &:hover {
-    border: 5px solid #000;
     cursor: pointer;
   }
 `;
