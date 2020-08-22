@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
@@ -18,4 +18,6 @@ export const Input = styled.input`
   height: 40px;
   border: 1px solid #424242;
   padding: 8px;
+
+  ${(props) => (props.error && css`border-color: #f00`)}
 `;

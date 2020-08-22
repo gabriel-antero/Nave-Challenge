@@ -6,7 +6,7 @@ const InputComponent = ({ label, name, register, placeholder, error, type }) => 
     {label && <Text>{label}</Text>}
     <Container>
       <Input name={name} ref={register} placeholder={placeholder} error={error} type={type} />
-      <Text position="absolute" bottom={0} color="red">
+      <Text position="absolute" bottom={0} style={{ color: 'red', fontSize: 10 }}>
         {error}
       </Text>
     </Container>
