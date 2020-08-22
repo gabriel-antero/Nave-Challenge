@@ -1,9 +1,10 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
+import { yupResolver } from '@hookform/resolvers';
 import { useAuth } from '../../hooks/auth';
 
-import api from '../../services/api';
+import { loginSchema } from '../../helpers/yup';
 
 import logoImg from '../../assets/logo.svg';
 
@@ -13,7 +14,8 @@ import Button from '../../components/Button';
 import { Container, Content, Logo, Form } from './styles';
 
 const SignIn = () => {
-  const { register, handleSubmit, errors, formState } = useForm();
+  const { register, handleSubmit, errors } = useForm({ resolver: yupResolver(loginSchema) });
+
   const history = useHistory();
   const { login } = useAuth();
 
@@ -50,7 +52,7 @@ const SignIn = () => {
             error={errors.password?.message}
           />
 
-          <Button type="submit" isLoading={formState.isSubmitting}>Entrar</Button>
+          <Button type="submit">Entrar</Button>
         </Form>
 
       </Content>
