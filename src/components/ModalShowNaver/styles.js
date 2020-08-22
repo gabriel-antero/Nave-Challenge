@@ -1,5 +1,4 @@
-import styled from 'styled-components';
-import Img from '../../assets/Img.svg';
+import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
@@ -9,7 +8,10 @@ export const Container = styled.div`
 
 export const BackgroundImage = styled.div`
   flex: 1;
-  background: url(${Img}) no-repeat center;
+  ${(props) => (props.image && css`
+    background: url(${props.image}) no-repeat center;
+  `)}
+
   background-size: cover;
   height: 100%;
 `;
@@ -17,7 +19,7 @@ export const BackgroundImage = styled.div`
 export const Content = styled.div`
   width: 50%;
   height: 100%;
-  
+
   display: flex;
   flex-direction: column;
   justify-items: center;
@@ -58,6 +60,10 @@ export const NaverName = styled.h2`
   color: #000000;
 
   margin-bottom: 10px;
+
+  @media (max-width: 500px) {
+    font-size: 1.8rem;
+  }
 `;
 
 export const NaverTitle = styled.p`
@@ -82,6 +88,14 @@ export const NaverDescription = styled.p`
 export const IconsContainer = styled.div`
   position: absolute;
   bottom: 27px;
+
+  @media (max-height: 500px) {
+    bottom: 10px;
+  }
+
+  @media (max-width: 500px) {
+    bottom: 10px;
+  }
 `;
 
 export const Icon = styled.img`
@@ -95,4 +109,5 @@ export const Icon = styled.img`
    &:hover {
     cursor: pointer;
   }
+
 `;
