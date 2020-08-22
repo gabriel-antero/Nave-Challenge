@@ -6,7 +6,6 @@ import { useAuth } from '../../hooks/auth';
 import api from '../../services/api';
 
 import logoImg from '../../assets/logo.svg';
-import Img from '../../assets/Img.svg';
 import Delete from '../../assets/Delete-Icon.svg';
 import Edit from '../../assets/Edit-Icon.svg';
 
@@ -40,7 +39,7 @@ const Dashboard = () => {
   const [successModalOpen, setSuccessModalOpen] = useState(false);
   const history = useHistory();
 
-  const { logout, user } = useAuth();
+  const { logout } = useAuth();
 
   useEffect(() => {
     async function loadNavers() {
@@ -52,17 +51,22 @@ const Dashboard = () => {
     loadNavers();
   }, []);
 
-  function toggleShowModal() {
+  async function handleDeleteNaver() {
+    await api.delete(`/navers/${id}`);
+
+    const naverList = navers.filter((naver) => naver.id !== id);
+
+    setNavers(naverList);
+  }
+
+  function toggleShowModal(naver_id) {
+    setId(naver_id);
     setModalOpen(!modalOpen);
   }
 
-  function toggleDeleteModal(id) {
-    setId(id);
+  function toggleDeleteModal(naver_id) {
+    setId(naver_id);
     setDeleteModalOpen(!deleteModalOpen);
-
-    const naversList = navers.filter((naver) => naver.id !== id);
-
-    setNavers(naversList);
   }
 
   function toggleSuccessModel() {
@@ -76,28 +80,31 @@ const Dashboard = () => {
         <Logout onClick={logout}>Sair</Logout>
       </Header>
 
-      <ModalShowNaver isOpen={modalOpen} setIsOpen={toggleShowModal} />
-
+      <ModalShowNaver
+        isOpen={modalOpen}
+        setIsOpen={toggleShowModal}
+        handleDeleteNaver={handleDeleteNaver}
+        id={id}
+      />
       <ModalDeleteNaver
         isOpen={deleteModalOpen}
         setIsOpen={toggleDeleteModal}
         setSuccessIsOpen={toggleSuccessModel}
-        id={id}
+        handleDeleteNaver={handleDeleteNaver}
       />
 
       <Content>
         <TitleContainer>
-          <Title onClick={() => console.log(navers)}>Navers</Title>
+          <Title>Navers</Title>
           <Button style={{ width: 178 }} onClick={() => history.push('/add')}>
             Adicionar Naver
           </Button>
         </TitleContainer>
-
         <CardContainer>
           {navers
             && navers.map((naver) => (
               <Card key={naver.id}>
-                <Image src={naver.url} alt="test" onClick={toggleShowModal} />
+                <Image src={naver.url} alt={naver.name} onClick={() => toggleShowModal(naver.id)} />
                 <CardTitle>{naver.name}</CardTitle>
                 <CardDescription>{naver.job}</CardDescription>
                 <CardItens>
@@ -109,7 +116,7 @@ const Dashboard = () => {
                   <Icon
                     src={Edit}
                     alt="edit-test"
-                    onClick={() => history.push('/edit')}
+                    onClick={() => history.push('/edit', { params: { id: naver.id } })}
                   />
                 </CardItens>
               </Card>

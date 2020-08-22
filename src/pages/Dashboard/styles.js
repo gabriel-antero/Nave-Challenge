@@ -64,19 +64,18 @@ export const CardContainer = styled.div`
   width: 100%;
   height: 420px;
 
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-column-gap: 32px;
+  justify-content: start;
 
-  @media (max-width: 1200px) {
-    display: grid;
+  @media (max-width: 1250px) {
     grid-template-columns: 1fr 1fr 1fr;
-    justify-items: center;
   }
 
   @media (max-width: 950px) {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    justify-items: center;
   }
 
   @media (max-width: 700px) {
