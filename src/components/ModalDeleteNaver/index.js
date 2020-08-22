@@ -1,6 +1,4 @@
-import React, { useState, useCallback } from 'react';
-
-import api from '../../services/api';
+import React, { useState } from 'react';
 
 import Modal from '../Modal';
 
@@ -12,16 +10,15 @@ const ModelDeleteNaver = ({
   isOpen,
   setIsOpen,
   setSuccessIsOpen,
-  id,
+  handleDeleteNaver,
 }) => {
   const [modalOpen, setModalOpen] = useState(false);
 
-  const handleDeleteNaver = useCallback(async (id) => {
-    await api.delete(`/navers/${id}`);
-
+  const handleDeleteModel = () => {
+    handleDeleteNaver();
     setIsOpen();
     setModalOpen(!modalOpen);
-  }, [modalOpen, setIsOpen]);
+  };
 
   function handleSuccessModel() {
     setSuccessIsOpen();
@@ -42,7 +39,7 @@ const ModelDeleteNaver = ({
             >
               Cancelar
             </Button>
-            <Button onClick={() => handleDeleteNaver(id)}>Excluir</Button>
+            <Button onClick={handleDeleteModel}>Excluir</Button>
           </ButtonContainer>
         </Container>
       </Modal>
