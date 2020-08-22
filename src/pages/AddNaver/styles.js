@@ -33,6 +33,7 @@ export const Content = styled.div`
   width: 100%;
   max-width: 592px;
   margin: auto;
+  margin-bottom: 32px;
 `;
 
 export const TitleContainer = styled.div`
@@ -74,10 +75,10 @@ export const Form = styled.form`
 
   @media (max-width: 500px) {
     grid-gap: 0;
-    grid-template-columns: 1fr; 
+    grid-template-columns: 1fr;
 
     >:last-child {
       margin: auto;
     }
   }
-`; 
+`;

@@ -3,6 +3,9 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { useHistory } from 'react-router-dom';
+import { yupResolver } from '@hookform/resolvers';
+
+import { addNaverSchema } from '../../helpers/yup';
 
 import api from '../../services/api';
 
@@ -13,6 +16,8 @@ import ModalSuccess from '../../components/ModalSuccess';
 
 import Input from '../../components/Input';
 import Button from '../../components/Button';
+
+import { date } from '../../helpers/mask';
 
 import {
   Container,
@@ -28,7 +33,7 @@ import {
 
 const AddNaver = () => {
   const [modalOpen, setModalOpen] = useState(false);
-  const { register, handleSubmit, errors, formState } = useForm();
+  const { register, handleSubmit, errors } = useForm({ resolver: yupResolver(addNaverSchema) });
   const history = useHistory();
 
   function toggleModal() {
@@ -80,15 +85,13 @@ const AddNaver = () => {
         </TitleContainer>
 
         <Form onSubmit={handleSubmit(onSubmit)}>
-
           <Input
             name="name"
             register={register}
             label="Nome"
             placeholder="Nome"
-            error={errors.password?.message}
+            error={errors.name?.message}
           />
-
           <Input
             name="job_role"
             register={register}
@@ -96,23 +99,30 @@ const AddNaver = () => {
             placeholder="Cargo"
             error={errors.job_role?.message}
           />
-
           <Input
             name="birthdate"
             register={register}
-            label="Idade"
-            placeholder="Idade"
+            label="Nascimento"
+            placeholder="dd/mm/aaaa"
             error={errors.birthdate?.message}
+            onChange={(event) => {
+              event.currentTarget.maxLength = 10;
+              const { value } = event.target;
+              event.target.value = date(value);
+            }}
           />
-
           <Input
             name="admission_date"
             register={register}
             label="Tempo de empresa"
-            placeholder="Tempo de empresa"
+            placeholder="dd/mm/aaaa"
             error={errors.admission_date?.message}
+            onChange={(event) => {
+              event.currentTarget.maxLength = 10;
+              const { value } = event.target;
+              event.target.value = date(value);
+            }}
           />
-
           <Input
             name="project"
             register={register}
@@ -120,7 +130,6 @@ const AddNaver = () => {
             placeholder="Projetos que participou"
             error={errors.project?.message}
           />
-
           <Input
             name="url"
             register={register}
@@ -128,17 +137,8 @@ const AddNaver = () => {
             placeholder="URL da foto do Naver"
             error={errors.url?.message}
           />
-
           <div />
-
-          <Button
-            type="submit"
-            style={{ width: 176 }}
-            isLoading={formState.isSubmitting}
-          >
-            Salvar
-
-          </Button>
+          <Button type="submit" style={{ width: 176 }}>Salvar</Button>
         </Form>
       </Content>
     </Container>
