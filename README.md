@@ -21,13 +21,16 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/gabriel-antero/GoRestaurant-Web/tree/master#como-utilizar">Como utilizar<a/> |
-  <a href="https://github.com/gabriel-antero/GoRestaurant-Web/tree/master#funcionalidades">Funcionalidades<a/>
+  <a href="https://github.com/gabriel-antero/Nave-Challenge/tree/master#como-utilizar">Como utilizar<a/> |
+  <a href="https://github.com/gabriel-antero/Nave-Challenge/tree/master#funcionalidades">Funcionalidades<a/> |
+  <a href="https://github.com/gabriel-antero/Nave-Challenge/tree/master#funcionalidades">Tecnologias<a/>
 </p>
     
 <p align="center">
-  <img width="500"  alt="Desktop Screen" src="https://github.com/gabriel-antero/Nave-Challenge/blob/master/assets/homeScreen.png">
-  <img width="200"  alt="Mobile Screen" src="https://github.com/gabriel-antero/Nave-Challenge/blob/master/assets/mobileScreen.png"> 
+  <img  alt="Desktop DashboardScreen" src="https://github.com/gabriel-antero/Nave-Challenge/blob/master/assets/homeScreen.png">
+  <img  alt="Desktop Add Screen" src="https://github.com/gabriel-antero/Nave-Challenge/blob/master/assets/addNaver.png">
+  <img  alt="Desktop Delete Screen" src="https://github.com/gabriel-antero/Nave-Challenge/blob/master/assets/deleteNaver.png">
+  <img  alt="Mobile Screen" src="https://github.com/gabriel-antero/Nave-Challenge/blob/master/assets/mobileScreen.png"> 
 </p>
     
 ## :question: Como utilizar
@@ -50,5 +53,16 @@
   
 ## :rocket: Funcionalidades
   
-  Tem como funcionalidade avaliar os conceitos de CRUD (Create, Read, Update, Delete) do candidato, utilizando uma fake API, exibir os naver criados e permitir a criação, remoção e atualização desses navers.
+  Tem como funcionalidade avaliar os conceitos de CRUD (Create, Read, Update, Delete) do candidato, utilizando uma API para exibir os naver criados e permitir a criação, remoção e atualização desses navers.
+  
+## :rocket: Tecnologias
+  - ReactJS
+  - Styled-Components
+  - Axios
+  - Yup
+  - React Hook Form
+  - React Router Dom
+  - React Modal
+  - Eslint
+  - Prettier
   
