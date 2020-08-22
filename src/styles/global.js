@@ -31,9 +31,21 @@ export default createGlobalStyle`
     cursor: pointer;
   }
 
-  @media (max-width: 500px) {
+  @media (max-width: 650px) {
+    html {
+      font-size: 55%;
+    }
+  }
+
+  @media (max-width: 550px) {
     html {
       font-size: 50%;
+    }
+  }
+
+  @media (max-width: 450px) {
+    html {
+      font-size: 45%;
     }
   }
 `;
