@@ -5,15 +5,13 @@ import Routes from './routes';
 
 import GlobalStyle from './styles/global';
 
-const App = () => {
-  return (
-    <>
+const App = () => (
+  <>
     <GlobalStyle />
     <Router>
-       <Routes />
+      <Routes />
     </Router>
-    </>
-  );
-}
+  </>
+);
 
 export default App;

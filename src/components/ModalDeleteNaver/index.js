@@ -1,22 +1,27 @@
-import React, {useState} from 'react';
+import React, { useState, useCallback } from 'react';
+
+import api from '../../services/api';
 
 import Modal from '../Modal';
 
-import ModalSuccess from '../../components/ModalSuccess';
+import ModalSuccess from '../ModalSuccess';
 
 import { Container, Title, Description, ButtonContainer, Button } from './styles';
 
 const ModelDeleteNaver = ({
   isOpen,
   setIsOpen,
-  setSuccessIsOpen
+  setSuccessIsOpen,
+  id,
 }) => {
   const [modalOpen, setModalOpen] = useState(false);
 
-  function handleDeleteNaver() { 
+  const handleDeleteNaver = useCallback(async (id) => {
+    await api.delete(`/navers/${id}`);
+
     setIsOpen();
     setModalOpen(!modalOpen);
-  }
+  }, [modalOpen, setIsOpen]);
 
   function handleSuccessModel() {
     setSuccessIsOpen();
@@ -28,16 +33,17 @@ const ModelDeleteNaver = ({
       <Modal isOpen={isOpen} setIsOpen={setIsOpen} width="592px" height="233px">
         <Container>
           <Title>Excluir Naver</Title>
-          <Description>Tem certeza que deseja excluir este Naver?</Description>       
+          <Description>Tem certeza que deseja excluir este Naver?</Description>
 
           <ButtonContainer>
-            <Button 
-              style={{background: '#fff', color: '#000', border: '1px solid #121212'}} 
+            <Button
+              style={{ background: '#fff', color: '#000', border: '1px solid #121212' }}
               onClick={setIsOpen}
-            >Cancelar
+            >
+              Cancelar
             </Button>
-            <Button onClick={handleDeleteNaver}>Excluir</Button>
-          </ButtonContainer> 
+            <Button onClick={() => handleDeleteNaver(id)}>Excluir</Button>
+          </ButtonContainer>
         </Container>
       </Modal>
 

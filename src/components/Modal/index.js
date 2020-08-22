@@ -11,7 +11,7 @@ const Modal = ({ children, isOpen, setIsOpen, width, height }) => {
 
   return (
     <ReactModal
-      shouldCloseOnOverlayClick={true}
+      shouldCloseOnOverlayClick
       onRequestClose={setIsOpen}
       isOpen={modalStatus}
       ariaHideApp={false}

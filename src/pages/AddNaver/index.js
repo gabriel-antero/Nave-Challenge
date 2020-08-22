@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form';
 
 import { useHistory } from 'react-router-dom';
 
@@ -14,7 +14,7 @@ import ModalSuccess from '../../components/ModalSuccess';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 
-import { 
+import {
   Container,
   Header,
   Logo,
@@ -23,26 +23,41 @@ import {
   TitleContainer,
   Title,
   BackIcon,
-  Form
+  Form,
 } from './styles';
 
 const AddNaver = () => {
   const [modalOpen, setModalOpen] = useState(false);
-  const { register, handleSubmit, errors, formState} = useForm();
+  const { register, handleSubmit, errors, formState } = useForm();
   const history = useHistory();
 
   function toggleModal() {
     setModalOpen(!modalOpen);
   }
 
-  const onSubmit = async values => {
+  const onSubmit = async ({
+    job_role,
+    admission_date,
+    birthdate,
+    project,
+    name,
+    url }) => {
     try {
-      // await api.post(values)
+      await api.post('navers', {
+        job_role,
+        admission_date,
+        birthdate,
+        project,
+        name,
+        url,
+      });
+
+      history.push('/dashboard');
       toggleModal();
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   return (
     <Container>
@@ -60,13 +75,13 @@ const AddNaver = () => {
 
       <Content>
         <TitleContainer>
-          <BackIcon src={ArrowBack} alt="Back-Test" onClick={() => history.goBack()}/>
+          <BackIcon src={ArrowBack} alt="Back-Test" onClick={() => history.goBack()} />
           <Title>Adicionar Naver</Title>
         </TitleContainer>
 
         <Form onSubmit={handleSubmit(onSubmit)}>
 
-        <Input 
+          <Input
             name="name"
             register={register}
             label="Nome"
@@ -74,52 +89,59 @@ const AddNaver = () => {
             error={errors.password?.message}
           />
 
-          <Input 
-            name="role"
+          <Input
+            name="job_role"
             register={register}
             label="Cargo"
             placeholder="Cargo"
-            error={errors.password?.message}
+            error={errors.job_role?.message}
           />
 
-          <Input 
-            name="age"
+          <Input
+            name="birthdate"
             register={register}
             label="Idade"
             placeholder="Idade"
-            error={errors.password?.message}
+            error={errors.birthdate?.message}
           />
 
-          <Input 
-            name="working time"
+          <Input
+            name="admission_date"
             register={register}
             label="Tempo de empresa"
             placeholder="Tempo de empresa"
-            error={errors.password?.message}
+            error={errors.admission_date?.message}
           />
 
-          <Input 
-            name="password"
+          <Input
+            name="project"
             register={register}
             label="Projetos que participou"
             placeholder="Projetos que participou"
-            error={errors.password?.message}
+            error={errors.project?.message}
           />
 
-          <Input 
-            name="password"
+          <Input
+            name="url"
             register={register}
             label="URL da foto do Naver"
             placeholder="URL da foto do Naver"
-            error={errors.password?.message}
+            error={errors.url?.message}
           />
 
           <div />
 
-          <Button type="submit" style={{width: 176}}>Salvar</Button>
+          <Button
+            type="submit"
+            style={{ width: 176 }}
+            isLoading={formState.isSubmitting}
+          >
+            Salvar
+
+          </Button>
         </Form>
       </Content>
-     </Container>
+    </Container>
   );
 };
 
