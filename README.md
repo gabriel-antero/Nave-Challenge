@@ -21,9 +21,9 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/gabriel-antero/Nave-Challenge/tree/master#como-utilizar">Como utilizar<a/> |
-  <a href="https://github.com/gabriel-antero/Nave-Challenge/tree/master#funcionalidades">Funcionalidades<a/> |
-  <a href="https://github.com/gabriel-antero/Nave-Challenge/tree/master#funcionalidades">Tecnologias<a/>
+  <a href="https://github.com/gabriel-antero/Nave-Challenge#question-como-utilizar">Como utilizar<a/> |
+  <a href="https://github.com/gabriel-antero/Nave-Challenge#rocket-funcionalidades">Funcionalidades<a/> |
+  <a href="https://github.com/gabriel-antero/Nave-Challenge#rocket-tecnologias">Tecnologias<a/>
 </p>
     
 <p align="center">
@@ -55,7 +55,7 @@
   
   Tem como funcionalidade avaliar os conceitos de CRUD (Create, Read, Update, Delete) do candidato, utilizando uma API para exibir os naver criados e permitir a criação, remoção e atualização desses navers.
   
-## :rocket: Tecnologias
+## :bulb: Tecnologias
   - ReactJS
   - Styled-Components
   - Axios
