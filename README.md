@@ -10,7 +10,7 @@
 </h2> 
 
 <p align="center">
-  Desafio para vaga de front end na nave.rs
+  Desafio de front end
 </p>
 
 <p align="center">
@@ -53,7 +53,7 @@
   
 ## :rocket: Funcionalidades
   
-  Tem como funcionalidade avaliar os conceitos de CRUD (Create, Read, Update, Delete) do candidato, utilizando uma API para exibir os navers criados, permitir a criação, remoção e atualização desses navers.
+  Tem como funcionalidade avaliar os conceitos de CRUD (Create, Read, Update, Delete), utilizando uma API para exibir os navers criados, permitir a criação, remoção e atualização desses navers.
   
 ## :bulb: Tecnologias
   - ReactJS
